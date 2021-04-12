@@ -9,4 +9,7 @@ export class AppComponent {
   title = 'Frantz App';
   description = 'Hello World';
   hero = 'Frantz';
+  onLike() {
+    window.alert(`I like ${this.hero}`);
+  }
 }

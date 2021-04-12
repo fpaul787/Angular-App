@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Input} from '@angular/core';
-
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-hero',
@@ -17,4 +17,7 @@ export class HeroComponent implements OnInit {
   }
   @Input () name: string;
 
+  // @Output() liked = new EventEmitter();
+
+  @Output() liked = new EventEmitter<boolean>();
 }
