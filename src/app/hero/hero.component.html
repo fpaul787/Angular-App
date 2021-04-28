@@ -1,2 +1,4 @@
-<p>{{name}} hero works!</p>
-<button (click)="liked.emit(true)">Like</button>
+<p *ngIf="name === 'Boothstomper'; else noHero">{{name}} hero works!</p>
+<ng-template #noHero>
+  <p>Hero was not found</p>
+</ng-template>
