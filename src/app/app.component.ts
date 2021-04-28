@@ -11,5 +11,6 @@ export class AppComponent {
   hero = 'Frantz';
   onLike() {
     window.alert(`I like ${this.hero}`);
+    this.hero = 'Boothstomper';
   }
 }

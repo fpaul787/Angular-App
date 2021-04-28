@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {Input} from '@angular/core';
-import { Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, SimpleChanges, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-hero',
@@ -9,15 +7,25 @@ import { Output, EventEmitter } from '@angular/core';
 })
 
 
-export class HeroComponent implements OnInit {
+export class HeroComponent implements OnChanges, OnDestroy, OnInit {
+  @Input () name: string;
+  // @Output() liked = new EventEmitter();
+  @Output() liked = new EventEmitter<boolean>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
-  @Input () name: string;
 
-  // @Output() liked = new EventEmitter();
+  ngOnDestroy(){
+  }
 
-  @Output() liked = new EventEmitter<boolean>();
+  ngOnChanges(changes: SimpleChanges){
+    const hero = changes['name'];
+    const oldValue = hero.previousValue;
+    const newValue = hero.currentValue;
+    if(!hero.isFirstChange()){
+      console.log(`Hero changed from ${oldValue} to ${newValue}`);
+    }
+  }
 }
